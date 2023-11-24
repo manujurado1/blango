@@ -23,6 +23,15 @@ class Dev(Configuration):
 	EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 	ACCOUNT_ACTIVATION_DAYS = 7
 
+	REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+      "rest_framework.authentication.BasicAuthentication",
+      "rest_framework.authentication.SessionAuthentication",
+      "rest_framework.authentication.TokenAuthentication",
+    ]
+	}
+
+
 	# Quick-start development settings - unsuitable for production
 	# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -66,7 +75,8 @@ class Dev(Configuration):
       'allauth.account',
       'allauth.socialaccount',
       'allauth.socialaccount.providers.google',
-      'rest_framework'
+      'rest_framework',
+      'rest_framework.authtoken'
 	]
 
 	MIDDLEWARE = [
@@ -153,6 +163,7 @@ class Dev(Configuration):
 	# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 	DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 
 	CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 	CRISPY_TEMPLATE_PACK = "bootstrap5"
