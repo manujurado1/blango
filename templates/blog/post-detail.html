@@ -16,6 +16,13 @@
         {{ post.content|safe }}
     </div>
 {% endrow %}
+{% if post.hero_image %}
+    {% row %}
+        {% col %}
+            <img class="img-fluid" src="{{ post.hero_image.url }}">
+        {% endcol %}
+    {% endrow %}
+{% endif %}
 {% row %}
     {% col %}
         {% recent_posts post %}

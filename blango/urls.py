@@ -21,6 +21,7 @@ from blango_auth.forms import BlangoRegistrationForm
 import blog.views
 import debug_toolbar
 import blango_auth.views
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -42,5 +43,5 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += [
         path("__debug__/", include(debug_toolbar.urls)),
-    ]
+    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
